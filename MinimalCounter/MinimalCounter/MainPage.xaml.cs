@@ -45,10 +45,8 @@ namespace MinimalCounter
     {
         bool doIncrement = false;
         bool isPressed = false;
-        bool isReleased = false;
         Stopwatch stopwatch = new Stopwatch();
 
-        private DateTime timeStamp;
         private string counterValueString;
         private int counterValue = 0;
         private DisplayInfo mainDisplayInfo;
@@ -125,51 +123,10 @@ namespace MinimalCounter
             HeightString = mainDisplayInfo.Height.ToString();
         }
 
-        
-
         private void IncrementButton_Pressed(object sender, EventArgs e)
-        {
-            timeStamp = DateTime.Now;
-
-            try
-            {
-                // Use default vibration length
-                Vibration.Vibrate();
-
-                // Or use specified time
-                var duration = TimeSpan.FromMilliseconds(200);
-                Vibration.Vibrate(duration);
-            }
-            catch (FeatureNotSupportedException ex)
-            {
-                // Feature not supported on device
-            }
-            catch (Exception ex)
-            {
-                // Other error has occurred.
-            }
-
-        }
-
-        private void IncrementButton_Released(object sender, EventArgs e)
-        {
-            if (timeStamp.AddSeconds(3) < DateTime.Now)
-            {
-                counterValue = 0;
-                CounterValueString = counterValue.ToString();
-            }
-            else
-            {
-                counterValue++;
-                CounterValueString = counterValue.ToString();
-            }
-        }
-
-        private void IncrementButton_Pressed1(object sender, EventArgs e)
         {
             stopwatch.Start();
             isPressed = true;
-            isReleased = false;
             doIncrement = true;
 
             try
@@ -193,7 +150,7 @@ namespace MinimalCounter
             int j = 0;
             Device.StartTimer(TimeSpan.FromMilliseconds(1000), () =>
             {
-                if (isPressed && 3 < j++)
+                if (isPressed && 2 < j++)
                 {
                     doIncrement = false;
                     counterValue = 0;
@@ -204,10 +161,9 @@ namespace MinimalCounter
             });
         }
 
-        private void IncrementButton_Released1(object sender, EventArgs e)
+        private void IncrementButton_Released(object sender, EventArgs e)
         {
             isPressed = false;
-            isReleased = true;
             if (doIncrement)
             {
                 counterValue++;

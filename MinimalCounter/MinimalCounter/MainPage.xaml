@@ -9,8 +9,8 @@
     <ContentPage.Content>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
             <local:ExtendedButton Text="{Binding CounterValueString}" TextColor="DarkOrange" BackgroundColor="Transparent"
-                Pressed="IncrementButton_Pressed1"
-                Released="IncrementButton_Released1"
+                Pressed="IncrementButton_Pressed"
+                Released="IncrementButton_Released"
                 FontSize="Header"
                 WidthRequest="{Binding WidthString}"
                 HeightRequest="{Binding HeightString}"
