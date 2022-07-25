@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MinimalCounter.MainPage">
+
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
+            <Button Text="{Binding CounterValueString}" TextColor="DarkOrange" BackgroundColor="Black"
+                Pressed="IncrementButton_Pressed"
+                Released="IncrementButton_Released"
+                WidthRequest="{Binding WidthString}"
+                HeightRequest="{Binding HeightString}"
+                Margin="0"
+                Padding="0,0,0,0"
+                FontSize="Header"
+                HorizontalOptions="Center"
+                FontAttributes="Bold" />
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
+
