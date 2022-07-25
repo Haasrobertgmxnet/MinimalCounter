@@ -1,0 +1,6 @@
+Verarbeitung personenbezogener Daten in der App:
+Name, Adresse, Telefonnumern, E-Mail-Adressen des Nutzers oder anderer Personen: NEIN
+(Anonymisiertes) Tracking des Nutzerverhaltens: NEIN
+Gerätestandort: NEIN
+Geräte-IP: NEIN
+Sonstige persönliche Daten: NEIN
