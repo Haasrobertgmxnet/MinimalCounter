@@ -2,12 +2,52 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using System.Diagnostics;
+
+namespace MinimalCounter
+{
+    public class ExtendedButton : Button
+    {
+
+        public static BindableProperty HorizontalTextAlignmentProperty = BindableProperty.Create<ExtendedButton, Xamarin.Forms.TextAlignment>(x => x.HorizontalTextAlignment, Xamarin.Forms.TextAlignment.Center);
+        public Xamarin.Forms.TextAlignment HorizontalTextAlignment
+        {
+            get
+            {
+                return (Xamarin.Forms.TextAlignment)GetValue(HorizontalTextAlignmentProperty);
+            }
+            set
+            {
+                SetValue(HorizontalTextAlignmentProperty, value);
+            }
+        }
+
+
+        public static BindableProperty VerticalTextAlignmentProperty = BindableProperty.Create<ExtendedButton, Xamarin.Forms.TextAlignment>(x => x.VerticalTextAlignment, Xamarin.Forms.TextAlignment.Center);
+        public Xamarin.Forms.TextAlignment VerticalTextAlignment
+        {
+            get
+            {
+                return (Xamarin.Forms.TextAlignment)GetValue(VerticalTextAlignmentProperty);
+            }
+            set
+            {
+                SetValue(VerticalTextAlignmentProperty, value);
+            }
+        }
+    }
+}
 
 namespace MinimalCounter
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        bool doIncrement = false;
+        bool isPressed = false;
+        bool isReleased = false;
+        Stopwatch stopwatch = new Stopwatch();
+
         private DateTime timeStamp;
         private string counterValueString;
         private int counterValue = 0;
@@ -85,9 +125,12 @@ namespace MinimalCounter
             HeightString = mainDisplayInfo.Height.ToString();
         }
 
+        
+
         private void IncrementButton_Pressed(object sender, EventArgs e)
         {
             timeStamp = DateTime.Now;
+
             try
             {
                 // Use default vibration length
@@ -105,8 +148,7 @@ namespace MinimalCounter
             {
                 // Other error has occurred.
             }
-            counterValue++;
-            CounterValueString = counterValue.ToString();
+
         }
 
         private void IncrementButton_Released(object sender, EventArgs e)
@@ -114,6 +156,61 @@ namespace MinimalCounter
             if (timeStamp.AddSeconds(3) < DateTime.Now)
             {
                 counterValue = 0;
+                CounterValueString = counterValue.ToString();
+            }
+            else
+            {
+                counterValue++;
+                CounterValueString = counterValue.ToString();
+            }
+        }
+
+        private void IncrementButton_Pressed1(object sender, EventArgs e)
+        {
+            stopwatch.Start();
+            isPressed = true;
+            isReleased = false;
+            doIncrement = true;
+
+            try
+            {
+                // Use default vibration length
+                Vibration.Vibrate();
+
+                // Or use specified time
+                var duration = TimeSpan.FromMilliseconds(200);
+                Vibration.Vibrate(duration);
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+
+            int j = 0;
+            Device.StartTimer(TimeSpan.FromMilliseconds(1000), () =>
+            {
+                if (isPressed && 3 < j++)
+                {
+                    doIncrement = false;
+                    counterValue = 0;
+                    CounterValueString = counterValue.ToString();
+                    stopwatch.Reset();
+                }
+                return isPressed;
+            });
+        }
+
+        private void IncrementButton_Released1(object sender, EventArgs e)
+        {
+            isPressed = false;
+            isReleased = true;
+            if (doIncrement)
+            {
+                counterValue++;
                 CounterValueString = counterValue.ToString();
             }
         }

@@ -2,21 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:MinimalCounter"
              mc:Ignorable="d"
              x:Class="MinimalCounter.MainPage">
 
     <ContentPage.Content>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black">
-            <Button Text="{Binding CounterValueString}" TextColor="DarkOrange" BackgroundColor="Black"
-                Pressed="IncrementButton_Pressed"
-                Released="IncrementButton_Released"
+            <local:ExtendedButton Text="{Binding CounterValueString}" TextColor="DarkOrange" BackgroundColor="Transparent"
+                Pressed="IncrementButton_Pressed1"
+                Released="IncrementButton_Released1"
+                FontSize="Header"
                 WidthRequest="{Binding WidthString}"
                 HeightRequest="{Binding HeightString}"
                 Margin="0"
-                Padding="0,0,0,0"
-                FontSize="Header"
-                HorizontalOptions="Center"
+                Padding="0,0,200,200"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
                 FontAttributes="Bold" />
         </AbsoluteLayout>
     </ContentPage.Content>
