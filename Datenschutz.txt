@@ -11,3 +11,4 @@ Sonstige Datenchutz-relevante Daten: KEINE Verarbeitung dieser Daten.
 
 Veröffentlichter Quelltext deser App: https://github.com/Haasrobertgmxnet/MinimalCounter
 Verantwortlich: Robert Haas, München. E-Mail: Haasrobert@gmx.net
+
