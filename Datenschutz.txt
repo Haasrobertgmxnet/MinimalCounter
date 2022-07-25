@@ -1,0 +1,13 @@
+Verarbeitung personenbezogener Daten in der App:
+Name, Adresse, Telefonnumern, E-Mail-Adressen des Nutzers oder anderer Personen: KEINE Verarbeitung dieser Daten.
+Kontaktdaten, Telefonbuch, Adressbuch des Nutzers: KEINE Verarbeitung dieser Daten.
+(Anonymisiertes) Tracking des Nutzerverhaltens: KEINE Verarbeitung dieser Daten.
+Zugriff auf Social-Media-Konten: KEINE Verarbeitung dieser Daten.
+Zugriff auf Konten von Messenger-Diensten: KEINE Verarbeitung dieser Daten.
+Gerätestandort: KEINE Verarbeitung dieser Daten.
+Geräte-IP: KEINE Verarbeitung dieser Daten.
+Sonstige persönliche Daten: KEINE Verarbeitung dieser Daten.
+Sonstige Datenchutz-relevante Daten: KEINE Verarbeitung dieser Daten.
+
+Veröffentlichter Quelltext deser App: https://github.com/Haasrobertgmxnet/MinimalCounter
+Verantwortlich: Robert Haas, München. E-Mail: Haasrobert@gmx.net
