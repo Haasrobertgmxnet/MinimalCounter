@@ -6,40 +6,6 @@ using System.Diagnostics;
 
 namespace MinimalCounter
 {
-    public class ExtendedButton : Button
-    {
-
-        public static BindableProperty HorizontalTextAlignmentProperty = BindableProperty.Create<ExtendedButton, Xamarin.Forms.TextAlignment>(x => x.HorizontalTextAlignment, Xamarin.Forms.TextAlignment.Center);
-        public Xamarin.Forms.TextAlignment HorizontalTextAlignment
-        {
-            get
-            {
-                return (Xamarin.Forms.TextAlignment)GetValue(HorizontalTextAlignmentProperty);
-            }
-            set
-            {
-                SetValue(HorizontalTextAlignmentProperty, value);
-            }
-        }
-
-
-        public static BindableProperty VerticalTextAlignmentProperty = BindableProperty.Create<ExtendedButton, Xamarin.Forms.TextAlignment>(x => x.VerticalTextAlignment, Xamarin.Forms.TextAlignment.Center);
-        public Xamarin.Forms.TextAlignment VerticalTextAlignment
-        {
-            get
-            {
-                return (Xamarin.Forms.TextAlignment)GetValue(VerticalTextAlignmentProperty);
-            }
-            set
-            {
-                SetValue(VerticalTextAlignmentProperty, value);
-            }
-        }
-    }
-}
-
-namespace MinimalCounter
-{
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
@@ -61,8 +27,8 @@ namespace MinimalCounter
             {
                 this.width = width;
                 this.height = height;
-                HeightString = (mainDisplayInfo.Density * height).ToString();
-                WidthString = (mainDisplayInfo.Density * width).ToString();
+                HeightString = ((int)height).ToString();
+                WidthString = ((int)width).ToString();
             }
         }
 
@@ -135,7 +101,7 @@ namespace MinimalCounter
                 Vibration.Vibrate();
 
                 // Or use specified time
-                var duration = TimeSpan.FromMilliseconds(200);
+                var duration = TimeSpan.FromMilliseconds(150);
                 Vibration.Vibrate(duration);
             }
             catch (FeatureNotSupportedException ex)
